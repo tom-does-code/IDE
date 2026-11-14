@@ -1,0 +1,188 @@
+{
+  "name": "forge-php-desktop",
+  "productName": "Forge PHP",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Standalone PHP and CodeIgniter development environment",
+  "author": "Forge PHP",
+  "license": "UNLICENSED",
+  "main": "forge-main.cjs",
+  "scripts": {
+    "build": "theia build --mode production",
+    "start": "theia start --plugins=local-dir:../plugins",
+    "rebuild": "theia rebuild:electron"
+  },
+  "theia": {
+    "target": "electron",
+    "frontend": {
+      "config": {
+        "applicationName": "Forge PHP",
+        "defaultTheme": "dark",
+        "defaultIconTheme": "material-icon-theme",
+        "reloadOnReconnect": true,
+        "preferences": {
+          "workbench.colorTheme": "Forge Graphite",
+          "editor.fontFamily": "Cascadia Code, Consolas, monospace",
+          "editor.fontSize": 14,
+          "editor.tabSize": 4,
+          "editor.formatOnSave": true,
+          "editor.minimap.enabled": false,
+          "files.autoSave": "off",
+          "terminal.integrated.defaultProfile.windows": "PowerShell",
+          "php.suggest.basic": false,
+          "[php]": {
+            "editor.defaultFormatter": "local-forge.forge-php",
+            "editor.formatOnSave": true
+          },
+          "[javascript]": {
+            "editor.defaultFormatter": "local-forge.forge-php",
+            "editor.formatOnSave": true
+          },
+          "[css]": {
+            "editor.defaultFormatter": "local-forge.forge-php",
+            "editor.formatOnSave": true
+          },
+          "[html]": {
+            "editor.defaultFormatter": "local-forge.forge-php",
+            "editor.formatOnSave": true
+          },
+          "intelephense.environment.phpVersion": "8.4.0",
+          "php.validate.executablePath": "C:\\Users\\Halcy\\Desktop\\IDE\\tools\\php\\php.exe",
+          "php.debug.executablePath": "C:\\Users\\Halcy\\Desktop\\IDE\\tools\\php\\php.exe",
+          "phpunit.php": "C:\\Users\\Halcy\\Desktop\\IDE\\tools\\php\\php.exe",
+          "window.title": "${activeEditorShort}${separator}${rootName}${separator}Forge PHP",
+          "workbench.startupEditor": "none",
+          "files.exclude": {
+            "**/.git": true
+          },
+          "search.exclude": {
+            "**/vendor": true,
+            "**/node_modules": true
+          },
+          "editor.bracketPairColorization.enabled": true,
+          "breadcrumbs.enabled": true,
+          "git.autofetch": false,
+          "workbench.iconTheme": "material-icon-theme",
+          "terminal.integrated.profiles.windows": {
+            "PowerShell": {
+              "args": [
+                "-NoLogo"
+              ],
+              "path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+            }
+          },
+          "editor.quickSuggestions": {
+            "other": true,
+            "comments": false,
+            "strings": true
+          },
+          "editor.suggestOnTriggerCharacters": true,
+          "editor.parameterHints.enabled": true,
+          "editor.codeLens": true,
+          "rest-client.enableSendRequestCodeLens": true,
+          "rest-client.previewResponseInUntitledDocument": false,
+          "rest-client.previewResponsePanelTakeFocus": true,
+          "editor.autoClosingBrackets": "languageDefined",
+          "editor.autoClosingQuotes": "languageDefined",
+          "editor.autoIndent": "full",
+          "editor.suggestSelection": "first",
+          "editor.acceptSuggestionOnEnter": "on",
+          "editor.matchBrackets": "always",
+          "workbench.tree.indent": 14,
+          "[javascriptreact]": {
+            "editor.defaultFormatter": "local-forge.forge-php",
+            "editor.formatOnSave": true
+          },
+          "[typescript]": {
+            "editor.defaultFormatter": "local-forge.forge-php",
+            "editor.formatOnSave": true
+          },
+          "[typescriptreact]": {
+            "editor.defaultFormatter": "local-forge.forge-php",
+            "editor.formatOnSave": true
+          },
+          "[json]": {
+            "editor.defaultFormatter": "local-forge.forge-php",
+            "editor.formatOnSave": true
+          },
+          "[jsonc]": {
+            "editor.defaultFormatter": "local-forge.forge-php",
+            "editor.formatOnSave": true
+          },
+          "[scss]": {
+            "editor.defaultFormatter": "local-forge.forge-php",
+            "editor.formatOnSave": true
+          },
+          "[markdown]": {
+            "editor.defaultFormatter": "local-forge.forge-php",
+            "editor.formatOnSave": true
+          },
+          "[yaml]": {
+            "editor.defaultFormatter": "local-forge.forge-php",
+            "editor.formatOnSave": true
+          },
+          "intelephense.format.enable": false,
+          "forge.showWelcome": false
+        },
+        "electron": {
+          "appUserModelId": "dev.forge.php",
+          "showWindowEarly": true,
+          "windowOptions": {
+            "width": 1440,
+            "height": 950,
+            "minWidth": 900,
+            "minHeight": 640,
+            "backgroundColor": "#1c1e24"
+          }
+        }
+      }
+    },
+    "backend": {
+      "config": {
+        "frontendConnectionTimeout": -1,
+        "configurationFolder": ".forge-php",
+        "resolveSystemPlugins": false
+      }
+    }
+  },
+  "dependencies": {
+    "@theia/bulk-edit": "1.77.0",
+    "@theia/callhierarchy": "1.77.0",
+    "@theia/console": "1.77.0",
+    "@theia/core": "1.77.0",
+    "@theia/debug": "1.77.0",
+    "@theia/editor": "1.77.0",
+    "@theia/electron": "1.77.0",
+    "@theia/file-search": "1.77.0",
+    "@theia/filesystem": "1.77.0",
+    "@theia/keymaps": "1.77.0",
+    "@theia/markers": "1.77.0",
+    "@theia/messages": "1.77.0",
+    "@theia/mini-browser": "1.77.0",
+    "@theia/monaco": "1.77.0",
+    "@theia/navigator": "1.77.0",
+    "@theia/outline-view": "1.77.0",
+    "@theia/output": "1.77.0",
+    "@theia/plugin-ext": "1.77.0",
+    "@theia/plugin-ext-vscode": "1.77.0",
+    "@theia/preferences": "1.77.0",
+    "@theia/process": "1.77.0",
+    "@theia/scm": "1.77.0",
+    "@theia/search-in-workspace": "1.77.0",
+    "@theia/secondary-window": "1.77.0",
+    "@theia/task": "1.77.0",
+    "@theia/terminal": "1.77.0",
+    "@theia/timeline": "1.77.0",
+    "@theia/typehierarchy": "1.77.0",
+    "@theia/userstorage": "1.77.0",
+    "@theia/variable-resolver": "1.77.0",
+    "@theia/vsx-registry": "1.77.0",
+    "@theia/workspace": "1.77.0",
+    "forge-branding": "file:../branding"
+  },
+  "devDependencies": {
+    "@theia/cli": "1.77.0",
+    "electron": "44.9.1",
+    "electron-builder": "^26.0.12"
+  }
+}

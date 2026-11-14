@@ -1,0 +1,11 @@
+{
+  "CI4 Controller":{"prefix":"ci-controller","body":["<?php","","namespace App\\Controllers;","","class ${1:Products} extends BaseController","{","    public function index(): string","    {","        return view('${2:products/index}', [${3}]);","    }","}"],"description":"CodeIgniter 4 controller"},
+  "CI4 Model":{"prefix":"ci-model","body":["<?php","","namespace App\\Models;","","use CodeIgniter\\Model;","","class ${1:ProductModel} extends Model","{","    protected $$table = '${2:products}';","    protected $$primaryKey = 'id';","    protected $$allowedFields = ['${3:name}'];","    protected $$useTimestamps = true;","    protected $$returnType = 'array';","}"],"description":"CodeIgniter 4 model"},
+  "CI4 Route":{"prefix":"ci-route","body":["$$routes->${1|get,post,put,patch,delete|}('${2:products}', '${3:Products}::${4:index}');"],"description":"HTTP route"},
+  "CI4 Route Group":{"prefix":"ci-group","body":["$$routes->group('${1:admin}', ['filter' => '${2:auth}'], static function ($$routes) {","    $$routes->get('${3:dashboard}', '${4:Dashboard}::index');","});"],"description":"Route group with filter"},
+  "CI4 JSON Response":{"prefix":"ci-json","body":["return $$this->response->setJSON([","    '${1:data}' => ${2:$$data},","]);"],"description":"JSON response"},
+  "CI4 View Escape":{"prefix":"ci-esc","body":["<?= esc(${1:$$value}) ?>"],"description":"Escape output in a view"},
+  "CI4 Validation":{"prefix":"ci-validate","body":["if (! $$this->validateData($$this->request->getPost(), [","    '${1:email}' => '${2:required|valid_email}',","])) {","    return redirect()->back()->withInput()->with('errors', $$this->validator->getErrors());","}"],"description":"Validate request data"},
+  "CI4 Service":{"prefix":"ci-service","body":["service('${1:session}')${2};"],"description":"Access a CodeIgniter service"},
+  "PHPUnit Test":{"prefix":"ci-test","body":["public function test${1:Behavior}(): void","{","    ${2:$$this->assertTrue(true);}","}"],"description":"PHPUnit test method"}
+}

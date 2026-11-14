@@ -1,0 +1,8 @@
+const {app}=require('electron');const path=require('path'),fs=require('fs');
+const base=path.resolve(__dirname,'..');process.env.FORGE_HOME=base;
+process.env.THEIA_CONFIG_DIR ||= path.join(base,'data');
+process.env.PATH=path.join(base,'tools/php')+';'+path.join(base,'tools')+';'+path.join(base,'tools/node')+';'+process.env.PATH;
+app.setName('Forge PHP');app.setAppUserModelId('dev.forge.php');app.setPath('userData',path.join(process.env.THEIA_CONFIG_DIR,'electron'));
+app.setAboutPanelOptions({applicationName:'Forge PHP',applicationVersion:'1.1.0',copyright:'Built on Eclipse Theia, Monaco, PHP, and independent language tools.'});
+if(process.env.FORGE_TEST==='1')app.on('browser-window-created',(_,window)=>{window.webContents.on('did-finish-load',()=>setTimeout(async()=>{try{const checks=await window.webContents.executeJavaScript(`(()=>{const nodes=[...document.querySelectorAll('#forge-main-toolbar button,#forge-main-toolbar select,.lm-TabBar.theia-app-sides .lm-TabBar-tab')];return nodes.filter(n=>n.getBoundingClientRect().width>0).map(n=>{const r=n.getBoundingClientRect(),target=document.elementFromPoint(r.x+r.width/2,r.y+r.height/2);return {label:n.textContent||n.title,rect:{x:r.x,y:r.y,width:r.width,height:r.height},hit:n===target||n.contains(target)}})})()`);fs.writeFileSync(path.join(base,'work/hit-targets.json'),JSON.stringify(checks,null,2));fs.writeFileSync(path.join(base,'work/workbench.png'),(await window.webContents.capturePage()).toPNG());}catch(e){fs.writeFileSync(path.join(base,'work/ui-test-error.txt'),e.stack);}},12000));});
+import('./lib/backend/electron-main.js');

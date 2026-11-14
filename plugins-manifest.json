@@ -1,0 +1,135 @@
+[
+  {
+    "id": "bmewburn/vscode-intelephense-client",
+    "version": "1.18.5",
+    "url": "https://open-vsx.org/api/bmewburn/vscode-intelephense-client/1.18.5/file/bmewburn.vscode-intelephense-client-1.18.5.vsix"
+  },
+  {
+    "id": "xdebug/php-debug",
+    "version": "1.40.2",
+    "url": "https://open-vsx.org/api/xdebug/php-debug/1.40.2/file/xdebug.php-debug-1.40.2.vsix"
+  },
+  {
+    "id": "EditorConfig/EditorConfig",
+    "version": "0.18.2",
+    "url": "https://open-vsx.org/api/EditorConfig/EditorConfig/0.18.2/file/EditorConfig.EditorConfig-0.18.2.vsix"
+  },
+  {
+    "id": "esbenp/prettier-vscode",
+    "version": "12.4.0",
+    "url": "https://open-vsx.org/api/esbenp/prettier-vscode/12.4.0/file/esbenp.prettier-vscode-12.4.0.vsix"
+  },
+  {
+    "id": "mikestead/dotenv",
+    "version": "1.0.1",
+    "url": "https://open-vsx.org/api/mikestead/dotenv/1.0.1/file/mikestead.dotenv-1.0.1.vsix"
+  },
+  {
+    "id": "PKief/material-icon-theme",
+    "version": "5.40.0",
+    "url": "https://open-vsx.org/api/PKief/material-icon-theme/5.40.0/file/PKief.material-icon-theme-5.40.0.vsix"
+  },
+  {
+    "id": "mtxr/sqltools",
+    "version": "0.28.6",
+    "url": "https://open-vsx.org/api/mtxr/sqltools/0.28.6/file/mtxr.sqltools-0.28.6.vsix"
+  },
+  {
+    "id": "mtxr/sqltools-driver-mysql",
+    "version": "0.6.7",
+    "url": "https://open-vsx.org/api/mtxr/sqltools-driver-mysql/0.6.7/file/mtxr.sqltools-driver-mysql-0.6.7.vsix"
+  },
+  {
+    "id": "mtxr/sqltools-driver-pg",
+    "version": "0.5.8",
+    "url": "https://open-vsx.org/api/mtxr/sqltools-driver-pg/0.5.8/file/mtxr.sqltools-driver-pg-0.5.8.vsix"
+  },
+  {
+    "id": "humao/rest-client",
+    "version": "0.25.0",
+    "url": "https://open-vsx.org/api/humao/rest-client/0.25.0/file/humao.rest-client-0.25.0.vsix"
+  },
+  {
+    "id": "recca0120/vscode-phpunit",
+    "version": "3.9.40",
+    "url": "https://open-vsx.org/api/recca0120/vscode-phpunit/3.9.40/file/recca0120.vscode-phpunit-3.9.40.vsix"
+  },
+  {
+    "id": "vscode/php",
+    "version": "1.95.3",
+    "url": "https://open-vsx.org/api/vscode/php/1.95.3/file/vscode.php-1.95.3.vsix"
+  },
+  {
+    "id": "vscode/html",
+    "version": "1.95.3",
+    "url": "https://open-vsx.org/api/vscode/html/1.95.3/file/vscode.html-1.95.3.vsix"
+  },
+  {
+    "id": "vscode/css",
+    "version": "1.95.3",
+    "url": "https://open-vsx.org/api/vscode/css/1.95.3/file/vscode.css-1.95.3.vsix"
+  },
+  {
+    "id": "vscode/javascript",
+    "version": "1.95.3",
+    "url": "https://open-vsx.org/api/vscode/javascript/1.95.3/file/vscode.javascript-1.95.3.vsix"
+  },
+  {
+    "id": "vscode/typescript-basics",
+    "error": "404"
+  },
+  {
+    "id": "vscode/json",
+    "version": "1.95.3",
+    "url": "https://open-vsx.org/api/vscode/json/1.95.3/file/vscode.json-1.95.3.vsix"
+  },
+  {
+    "id": "vscode/git",
+    "version": "1.95.3",
+    "url": "https://open-vsx.org/api/vscode/git/1.95.3/file/vscode.git-1.95.3.vsix"
+  },
+  {
+    "id": "vscode/git-base",
+    "version": "1.95.3",
+    "url": "https://open-vsx.org/api/vscode/git-base/1.95.3/file/vscode.git-base-1.95.3.vsix"
+  },
+  {
+    "id": "vscode/markdown-basics",
+    "error": "404"
+  },
+  {
+    "id": "vscode/markdown-language-features",
+    "version": "1.95.3",
+    "url": "https://open-vsx.org/api/vscode/markdown-language-features/1.95.3/file/vscode.markdown-language-features-1.95.3.vsix"
+  },
+  {
+    "id": "vscode/json-language-features",
+    "version": "1.95.3",
+    "url": "https://open-vsx.org/api/vscode/json-language-features/1.95.3/file/vscode.json-language-features-1.95.3.vsix"
+  },
+  {
+    "id": "vscode/html-language-features",
+    "version": "1.95.3",
+    "url": "https://open-vsx.org/api/vscode/html-language-features/1.95.3/file/vscode.html-language-features-1.95.3.vsix"
+  },
+  {
+    "id": "vscode/css-language-features",
+    "version": "1.95.3",
+    "url": "https://open-vsx.org/api/vscode/css-language-features/1.95.3/file/vscode.css-language-features-1.95.3.vsix"
+  },
+  {
+    "id": "vscode/emmet",
+    "version": "1.95.3",
+    "url": "https://open-vsx.org/api/vscode/emmet/1.95.3/file/vscode.emmet-1.95.3.vsix"
+  },
+  {
+    "id": "vscode/configuration-editing",
+    "version": "1.95.3",
+    "url": "https://open-vsx.org/api/vscode/configuration-editing/1.95.3/file/vscode.configuration-editing-1.95.3.vsix"
+  },
+  {
+    "id": "vscode/shellscript",
+    "version": "1.95.3",
+    "url": "https://open-vsx.org/api/vscode/shellscript/1.95.3/file/vscode.shellscript-1.95.3.vsix"
+  }
+]

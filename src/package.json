@@ -1,0 +1,397 @@
+{
+  "name": "forge-php",
+  "displayName": "Forge PHP",
+  "description": "A focused PHP and CodeIgniter 4 workbench with an isolated local toolchain.",
+  "version": "1.0.0",
+  "publisher": "local-forge",
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "main": "./extension.js",
+  "categories": [
+    "Programming Languages",
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": "limited",
+      "description": "Project commands require a trusted workspace."
+    }
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "forge.home",
+        "title": "Forge: Open Workbench",
+        "icon": "$(home)"
+      },
+      {
+        "command": "forge.newProject",
+        "title": "Forge: Create CodeIgniter 4 Project",
+        "icon": "$(new-folder)"
+      },
+      {
+        "command": "forge.configure",
+        "title": "Forge: Configure Project Tasks and Debugging",
+        "icon": "$(tools)"
+      },
+      {
+        "command": "forge.serve",
+        "title": "Forge: Start Development Server",
+        "icon": "$(play)"
+      },
+      {
+        "command": "forge.preview",
+        "title": "Forge: Open Local Site",
+        "icon": "$(globe)"
+      },
+      {
+        "command": "forge.spark",
+        "title": "Forge: Run Spark Command",
+        "icon": "$(terminal)"
+      },
+      {
+        "command": "forge.generate",
+        "title": "Forge: Generate CodeIgniter Class",
+        "icon": "$(file-add)"
+      },
+      {
+        "command": "forge.routes",
+        "title": "Forge: Inspect Routes",
+        "icon": "$(list-tree)"
+      },
+      {
+        "command": "forge.migrate",
+        "title": "Forge: Run Database Migrations",
+        "icon": "$(database)"
+      },
+      {
+        "command": "forge.test",
+        "title": "Forge: Run PHPUnit",
+        "icon": "$(beaker)"
+      },
+      {
+        "command": "forge.testFile",
+        "title": "Forge: Run Current PHPUnit File",
+        "icon": "$(beaker)"
+      },
+      {
+        "command": "forge.composer",
+        "title": "Forge: Composer",
+        "icon": "$(package)"
+      },
+      {
+        "command": "forge.terminal",
+        "title": "Forge: New Project Terminal",
+        "icon": "$(terminal)"
+      },
+      {
+        "command": "forge.debug",
+        "title": "Forge: Debug CodeIgniter Server",
+        "icon": "$(debug-alt)"
+      },
+      {
+        "command": "forge.health",
+        "title": "Forge: Check Toolchain",
+        "icon": "$(pulse)"
+      },
+      {
+        "command": "forge.refresh",
+        "title": "Forge: Refresh Project",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "forge.quality",
+        "title": "Forge: Run Project Quality Checks",
+        "icon": "$(checklist)"
+      },
+      {
+        "command": "forge.http",
+        "title": "Forge: Open HTTP Requests"
+      },
+      {
+        "command": "forge.theme",
+        "title": "Forge: Choose Color Theme"
+      },
+      {
+        "command": "forge.controller",
+        "title": "Forge: Open Home Controller"
+      },
+      {
+        "command": "forge.routeFile",
+        "title": "Forge: Edit Routes"
+      },
+      {
+        "command": "forge.env",
+        "title": "Forge: Edit Environment"
+      },
+      {
+        "command": "forge.composerFile",
+        "title": "Forge: Edit Composer Manifest"
+      },
+      {
+        "command": "forge.stop",
+        "title": "Forge: Stop Development Server / Debugging"
+      },
+      {
+        "command": "forge.relatedView",
+        "title": "Forge: Open Related View"
+      },
+      {
+        "command": "forge.logs",
+        "title": "Forge: Tail CodeIgniter Application Log"
+      },
+      {
+        "command": "forge.lint",
+        "title": "Forge: Check Current PHP Syntax"
+      },
+      {
+        "command": "forge.phpInfo",
+        "title": "Forge: Show PHP Configuration"
+      },
+      {
+        "command": "forge.docs",
+        "title": "Forge: Documentation Library"
+      },
+      {
+        "command": "forge.phpDocs",
+        "title": "Forge: PHP Function Documentation"
+      },
+      {
+        "command": "forge.tools",
+        "title": "Forge: Project Tools"
+      },
+      {
+        "command": "forge.snapshot",
+        "title": "Forge: Save Local Snapshot"
+      },
+      {
+        "command": "forge.fileHistory",
+        "title": "Forge: Compare Local File History"
+      },
+      {
+        "command": "forge.bookmark",
+        "title": "Forge: Toggle Bookmark"
+      },
+      {
+        "command": "forge.bookmarks",
+        "title": "Forge: Navigate Bookmarks"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "forge",
+          "title": "Forge PHP",
+          "icon": "media/forge.svg"
+        }
+      ]
+    },
+    "views": {
+      "forge": [
+        {
+          "id": "forge.project",
+          "name": "Project Workbench"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "forge.home",
+          "when": "view == forge.project",
+          "group": "navigation"
+        },
+        {
+          "command": "forge.refresh",
+          "when": "view == forge.project",
+          "group": "navigation"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "forge.relatedView",
+          "when": "editorLangId == php",
+          "group": "navigation@10"
+        },
+        {
+          "command": "forge.lint",
+          "when": "editorLangId == php",
+          "group": "navigation@11"
+        },
+        {
+          "command": "forge.testFile",
+          "when": "editorLangId == php",
+          "group": "navigation@12"
+        },
+        {
+          "command": "forge.bookmark",
+          "group": "forge@1"
+        },
+        {
+          "command": "forge.fileHistory",
+          "group": "forge@2"
+        }
+      ]
+    },
+    "themes": [
+      {
+        "label": "Forge Graphite",
+        "uiTheme": "vs-dark",
+        "path": "themes/graphite.json"
+      },
+      {
+        "label": "Forge Abyss",
+        "uiTheme": "vs-dark",
+        "path": "themes/abyss.json"
+      },
+      {
+        "label": "Forge Orchid",
+        "uiTheme": "vs-dark",
+        "path": "themes/orchid.json"
+      },
+      {
+        "label": "Forge Paper",
+        "uiTheme": "vs",
+        "path": "themes/paper.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "php",
+        "path": "snippets/php.json"
+      }
+    ],
+    "configuration": {
+      "title": "Forge PHP",
+      "properties": {
+        "forge.phpPath": {
+          "type": "string",
+          "default": "",
+          "description": "PHP executable override; empty uses the bundled runtime."
+        },
+        "forge.composerPath": {
+          "type": "string",
+          "default": "",
+          "description": "Composer PHAR override; empty uses the bundled Composer."
+        },
+        "forge.serverPort": {
+          "type": "number",
+          "default": 8080,
+          "minimum": 1024,
+          "maximum": 65535
+        },
+        "forge.showWelcome": {
+          "type": "boolean",
+          "default": true
+        }
+      }
+    },
+    "keybindings": [
+      {
+        "command": "workbench.action.quickOpen",
+        "key": "ctrl+p"
+      },
+      {
+        "command": "workbench.action.showAllSymbols",
+        "key": "ctrl+alt+shift+n"
+      },
+      {
+        "command": "workbench.action.gotoSymbol",
+        "key": "ctrl+f12"
+      },
+      {
+        "command": "editor.action.formatDocument",
+        "key": "ctrl+alt+l",
+        "when": "editorTextFocus && !editorReadonly"
+      },
+      {
+        "command": "editor.action.revealDefinition",
+        "key": "ctrl+b",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "editor.action.referenceSearch.trigger",
+        "key": "alt+f7",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "workbench.action.terminal.toggleTerminal",
+        "key": "alt+f12"
+      },
+      {
+        "command": "workbench.view.explorer",
+        "key": "alt+1"
+      },
+      {
+        "command": "workbench.view.scm",
+        "key": "alt+9"
+      },
+      {
+        "command": "forge.serve",
+        "key": "shift+f10"
+      },
+      {
+        "command": "forge.debug",
+        "key": "shift+f9"
+      },
+      {
+        "command": "forge.home",
+        "key": "ctrl+alt+h"
+      },
+      {
+        "command": "rest-client.request",
+        "key": "ctrl+alt+enter",
+        "when": "editorTextFocus && editorLangId == http"
+      },
+      {
+        "command": "forge.relatedView",
+        "key": "ctrl+alt+v",
+        "when": "editorLangId == php"
+      },
+      {
+        "command": "forge.stop",
+        "key": "shift+f2"
+      },
+      {
+        "command": "forge.phpDocs",
+        "key": "shift+f1",
+        "when": "editorLangId == php"
+      },
+      {
+        "command": "forge.bookmark",
+        "key": "ctrl+alt+b",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "forge.bookmarks",
+        "key": "ctrl+alt+j"
+      },
+      {
+        "command": "extract-widget",
+        "key": "ctrl+alt+o"
+      },
+      {
+        "command": "forge.fileHistory",
+        "key": "ctrl+alt+shift+h"
+      }
+    ]
+  },
+  "dependencies": {
+    "@prettier/plugin-php": "^0.26.0",
+    "cheerio": "^1.2.0",
+    "diff": "^9.0.0",
+    "jsonc-parser": "^3.3.1",
+    "prettier": "^3.10.1"
+  },
+  "scripts": {
+    "test": "node --test test/core.test.js",
+    "test:integration": "node test/run-integration.js"
+  },
+  "devDependencies": {
+    "@vscode/test-electron": "^2.5.2"
+  }
+}
