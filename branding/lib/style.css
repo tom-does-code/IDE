@@ -1,27 +1,195 @@
-:root{--theia-ui-font-family:'Segoe UI',sans-serif;--theia-private-sidebar-tab-width:34px;--theia-private-sidebar-tab-height:22px;--theia-private-sidebar-tab-padding-top-and-bottom:5px;--theia-private-sidebar-tab-padding-left-and-right:7px;--theia-private-sidebar-icon-size:18px}
+:root {
+  --theia-ui-font-family: "Segoe UI", sans-serif;
+  --theia-private-sidebar-tab-width: 34px;
+  --theia-private-sidebar-tab-height: 22px;
+  --theia-private-sidebar-tab-padding-top-and-bottom: 5px;
+  --theia-private-sidebar-tab-padding-left-and-right: 7px;
+  --theia-private-sidebar-icon-size: 18px;
+}
 /* Keep native tab geometry: overriding calculated tab heights desynchronizes hit targets. */
-.lm-TabBar.theia-app-sides .lm-TabBar-tabLabel{display:none}
-.lm-TabBar.theia-app-sides .lm-TabBar-tabIcon{pointer-events:none}
-#theia-top-panel{flex-wrap:wrap;align-content:flex-start;min-height:70px;max-height:70px;border-bottom:1px solid var(--theia-panel-border)}
-#theia-drag-panel{height:26px!important;max-height:26px;z-index:0}
-#theia-custom-title{height:30px;max-height:30px}
-#forge-main-toolbar{position:relative!important;left:auto!important;top:auto!important;flex:0 0 100%;order:1000;box-sizing:border-box;height:38px;min-height:38px;max-height:38px;width:100%;display:flex;align-items:center;gap:4px;padding:0 10px;border-top:1px solid var(--theia-panel-border);background:var(--theia-sideBar-background);color:var(--theia-foreground);z-index:2;-webkit-app-region:no-drag!important}
-#forge-main-toolbar *{-webkit-app-region:no-drag!important;box-sizing:border-box}
-.forge-wordmark{display:flex;align-items:center;gap:7px;white-space:nowrap;font-size:11px;letter-spacing:1.2px;margin-right:9px}
-.forge-wordmark b{background:var(--theia-button-background);color:var(--theia-button-foreground);border-radius:5px;width:23px;height:23px;line-height:23px;text-align:center;font-size:16px}
-.forge-wordmark em{font-style:normal;font-size:9px;color:var(--theia-descriptionForeground);letter-spacing:0}
-.forge-toolbar-divider{width:1px;height:16px;background:var(--theia-panel-border);margin:0 5px;flex-shrink:0}
-.forge-toolbar-spacer{flex:1}
-.forge-main-toolbar button,.forge-main-toolbar select{height:27px;padding:3px 8px;font:11px 'Segoe UI',sans-serif;border:1px solid transparent;border-radius:4px;background:transparent;color:var(--theia-foreground);cursor:pointer;white-space:nowrap;flex-shrink:0}
-.forge-main-toolbar button:hover{background:var(--theia-list-hoverBackground);border-color:var(--theia-input-border)}
-.forge-main-toolbar button:focus-visible,.forge-main-toolbar select:focus-visible{outline:1px solid var(--theia-focusBorder);outline-offset:1px}
-.forge-main-toolbar select{width:173px;background:var(--theia-input-background);border-color:var(--theia-input-border);color:var(--theia-input-foreground)}
-.forge-main-toolbar .forge-run{color:var(--theia-gitDecoration-addedResourceForeground);font-size:15px;width:28px;padding:2px}
-.forge-main-toolbar .forge-stop{color:var(--theia-errorForeground);font-size:11px;width:26px;padding:2px}
-.forge-main-toolbar .forge-project-button{font-weight:600}
-.forge-main-toolbar .forge-subtle{color:var(--theia-descriptionForeground)}
-.theia-sidepanel-toolbar{min-height:28px;font-size:11px}
-.theia-tree-node{line-height:22px}
-.lm-TabBar.theia-app-centers .lm-TabBar-tab{font-size:12px}
-.forge-bottom-tool{padding:0 8px!important;font-size:10px!important;border-right:1px solid var(--theia-panel-border)}
-@media(max-width:900px){.forge-wordmark em,.forge-subtle{display:none}.forge-wordmark{margin-right:2px}.forge-main-toolbar button{padding:3px 6px}.forge-main-toolbar select{width:155px}}
+.lm-TabBar.theia-app-sides .lm-TabBar-tabLabel {
+  display: none;
+}
+.lm-TabBar.theia-app-sides .lm-TabBar-tabIcon {
+  pointer-events: none;
+}
+#theia-top-panel {
+  flex-wrap: wrap;
+  align-content: flex-start;
+  min-height: 70px;
+  max-height: 70px;
+  border-bottom: 1px solid var(--theia-panel-border);
+}
+#theia-drag-panel {
+  height: 26px !important;
+  max-height: 26px;
+  z-index: 0;
+}
+#theia-custom-title {
+  height: 30px;
+  max-height: 30px;
+}
+#forge-main-toolbar {
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
+  flex: 0 0 100%;
+  order: 1000;
+  box-sizing: border-box;
+  height: 38px;
+  min-height: 38px;
+  max-height: 38px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 10px;
+  border-top: 1px solid var(--theia-panel-border);
+  background: var(--theia-sideBar-background);
+  color: var(--theia-foreground);
+  z-index: 2;
+  -webkit-app-region: no-drag !important;
+}
+#forge-main-toolbar * {
+  -webkit-app-region: no-drag !important;
+  box-sizing: border-box;
+}
+.forge-wordmark {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  white-space: nowrap;
+  font-size: 11px;
+  letter-spacing: 1.2px;
+  margin-right: 9px;
+}
+.forge-wordmark b {
+  background: var(--theia-button-background);
+  color: var(--theia-button-foreground);
+  border-radius: 5px;
+  width: 23px;
+  height: 23px;
+  line-height: 23px;
+  text-align: center;
+  font-size: 16px;
+}
+.forge-wordmark em {
+  font-style: normal;
+  font-size: 9px;
+  color: var(--theia-descriptionForeground);
+  letter-spacing: 0;
+}
+.forge-toolbar-divider {
+  width: 1px;
+  height: 16px;
+  background: var(--theia-panel-border);
+  margin: 0 5px;
+  flex-shrink: 0;
+}
+.forge-toolbar-spacer {
+  flex: 1;
+}
+.forge-main-toolbar button,
+.forge-main-toolbar select {
+  height: 27px;
+  padding: 3px 8px;
+  font:
+    11px "Segoe UI",
+    sans-serif;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--theia-foreground);
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.forge-main-toolbar button:hover {
+  background: var(--theia-list-hoverBackground);
+  border-color: var(--theia-input-border);
+}
+.forge-main-toolbar button:focus-visible,
+.forge-main-toolbar select:focus-visible {
+  outline: 1px solid var(--theia-focusBorder);
+  outline-offset: 1px;
+}
+.forge-main-toolbar select {
+  width: 173px;
+  background: var(--theia-input-background);
+  border-color: var(--theia-input-border);
+  color: var(--theia-input-foreground);
+}
+.forge-main-toolbar .forge-run {
+  color: var(--theia-gitDecoration-addedResourceForeground);
+  font-size: 15px;
+  width: 28px;
+  padding: 2px;
+}
+.forge-main-toolbar .forge-stop {
+  color: var(--theia-errorForeground);
+  font-size: 11px;
+  width: 26px;
+  padding: 2px;
+}
+.forge-main-toolbar .forge-project-button {
+  font-weight: 600;
+}
+.forge-main-toolbar .forge-subtle {
+  color: var(--theia-descriptionForeground);
+}
+.theia-sidepanel-toolbar {
+  min-height: 28px;
+  font-size: 11px;
+}
+.theia-tree-node {
+  line-height: 22px;
+}
+.lm-TabBar.theia-app-centers .lm-TabBar-tab {
+  font-size: 12px;
+}
+.forge-bottom-tool {
+  padding: 0 8px !important;
+  font-size: 10px !important;
+  border-right: 1px solid var(--theia-panel-border);
+}
+@media (max-width: 900px) {
+  .forge-wordmark em,
+  .forge-subtle {
+    display: none;
+  }
+  .forge-wordmark {
+    margin-right: 2px;
+  }
+  .forge-main-toolbar button {
+    padding: 3px 6px;
+  }
+  .forge-main-toolbar select {
+    width: 155px;
+  }
+}
+/* Badges must stay inside the native 34px tab, including counts such as 99+. */
+.lm-TabBar.theia-app-sides .theia-tab-icon-label {
+  position: relative;
+}
+.lm-TabBar.theia-app-sides .theia-badge-decorator-sidebar {
+  position: absolute;
+  top: 0;
+  right: 1px;
+  bottom: auto;
+  left: auto;
+  transform: none;
+  margin: 0;
+  box-sizing: border-box;
+  height: 14px;
+  min-width: 14px;
+  max-width: 27px;
+  width: auto;
+  white-space: nowrap;
+  padding: 0 3px;
+  border-radius: 7px;
+  font-size: 9px;
+  line-height: 14px;
+  text-align: center;
+  pointer-events: none;
+  z-index: 1;
+}

@@ -65,3 +65,15 @@ To use two monitors, open two files and drag one editor tab outside the main win
 Local history automatically retains up to 20 versions per supported code file (maximum 512 KB each), with a limit of 500 recently saved files. It is stored locally in the Forge extension storage. It complements Git and backups; snapshots begin after this feature is enabled. Bookmark positions are stored line numbers and may need updating after large edits.
 
 Secondary windows require the upstream Lumino patches: run `node_modules/.bin/theia-patch.cmd` before rebuilding if dependencies have been reinstalled.
+
+## Feature guide and project tooling
+
+Open **Help > Forge Feature Guide**, **Forge > Help and Feature Guide**, or press **Ctrl+Alt+F1**. The searchable guide covers every major workflow, setup steps, shortcuts, limitations, and a complete command directory.
+
+Project PHP formatting now detects root PHP-CS-Fixer or PHPCS configuration and uses the project's Composer binary. It applies only formatter hunks fully inside changed lines by default; use `forge.formatChangedLinesOnly` to opt into whole-file formatting. Unconfigured projects retain Prettier.
+
+Use **Forge > Set Up PHPStan** to install PHPStan plus the official CodeIgniter extension, then **Analyze with PHPStan** to populate Problems. Existing PHPStan configuration is preserved.
+
+The environment status displays .env values, and Forge-owned migration/rollback/seeding commands require two confirmations. SQLTools can import connection metadata from .env while prompting for the password instead of copying it to settings. The Help page explains the scope of these protections.
+
+The IDE source is tracked locally in Git. Run `npm test`, `npm run lint`, and `npm run format` at the repository root using the bundled Node. The Windows installer build and monthly upgrade policy are documented in `docs/MAINTENANCE.md`.

@@ -1,0 +1,252 @@
+[
+  {
+    "section": "Getting started",
+    "title": "Launch and open a project",
+    "description": "Forge PHP is a standalone PHP and CodeIgniter workspace with its own local PHP runtime.",
+    "steps": [
+      "Double-click the Forge PHP shortcut on your Desktop.",
+      "Use File > Open Folder to open the folder containing composer.json and, for CodeIgniter, spark.",
+      "Trust the folder only if you trust its PHP code and Composer scripts.",
+      "Choose Forge: Configure Project to add tasks and Xdebug launch settings without replacing existing named entries."
+    ],
+    "command": "forge.configure",
+    "note": "Keep the Desktop IDE folder in place for the existing shortcut. The development build and packaged releases have separate settings locations."
+  },
+  {
+    "section": "Getting started",
+    "title": "Create a CodeIgniter application",
+    "description": "Create an application using Composer and the official CodeIgniter appstarter.",
+    "steps": [
+      "Open Project > New CodeIgniter Project, or run the command below.",
+      "Choose a parent directory and a new folder name.",
+      "Wait for Composer to finish. Forge adds development settings and opens the project."
+    ],
+    "command": "forge.newProject",
+    "note": "Internet access is required. Existing folders are preserved."
+  },
+  {
+    "section": "Editing",
+    "title": "PHP intelligence and navigation",
+    "description": "Intelephense provides PHP highlighting, suggestions, signatures, diagnostics and navigation.",
+    "steps": [
+      "Open a PHP file and wait for project indexing.",
+      "Type a member expression such as $object-> to get suggestions; Ctrl+Space requests them manually.",
+      "Use F12 for definition, Shift+F12 for references and Ctrl+P to find files.",
+      "Review diagnostics in the Problems panel."
+    ],
+    "note": "Some Intelephense refactoring features require your own paid licence. Composer dependencies improve type information."
+  },
+  {
+    "section": "Editing",
+    "title": "CodeIgniter completions and related views",
+    "description": "Suggest project model/config names, services, language keys, validation rules, view paths and .env keys.",
+    "steps": [
+      "Type model(' , config(' , service(' , lang(' or view(' and request completion.",
+      "For rules, use a quoted 'rules' => '...' value; suggestions also appear after a pipe.",
+      "Open .env and request completion before the equals sign.",
+      "Use Forge: Related View to navigate from view(), extend() or include() calls."
+    ],
+    "command": "forge.relatedView",
+    "note": "This is static source discovery. Dynamic PHP arrays, nested language keys, custom namespace mappings and every possible validation syntax are not fully resolved."
+  },
+  {
+    "section": "Editing",
+    "title": "Formatting on save",
+    "description": "Use the project's PHP coding standard when configured; otherwise use bundled Prettier. Prettier also formats JavaScript, TypeScript, JSON, HTML, CSS, Markdown and YAML.",
+    "steps": [
+      "Install the project's Composer development dependencies.",
+      "Put .php-cs-fixer.php/.php-cs-fixer.dist.php or phpcs.xml/.phpcs.xml (including .dist variants) at the workspace root.",
+      "Save a PHP file. Forge runs vendor/bin/php-cs-fixer or vendor/bin/phpcbf with that configuration.",
+      "By default, only formatting hunks wholly inside lines changed since Git HEAD are applied. Without Git history, the saved disk version is the baseline.",
+      "Set forge.formatChangedLinesOnly to false if you explicitly want whole-file project formatting."
+    ],
+    "note": "A configured but missing or failed formatter does not silently fall back to Prettier. Hunks crossing unchanged lines are skipped. PHP-CS-Fixer uses a temporary sibling file, so filename-specific rules may behave differently. Prettier fallback still formats the whole file."
+  },
+  {
+    "section": "Editing",
+    "title": "Multiple monitors and split editors",
+    "description": "Keep different files open in separate editor windows, sharing the same project session.",
+    "steps": [
+      "Open the files you need.",
+      "Drag an editor tab outside the main window, or focus it and press Ctrl+Alt+O.",
+      "Move the detached window to your other display.",
+      "Use Forge > Bring All Editors Back to restore detached editors.",
+      "For an in-window split, use the editor tab's context menu or split-editor control."
+    ],
+    "note": "Keep the main window open while using detached editors."
+  },
+  {
+    "section": "Editing",
+    "title": "Bookmarks and local history",
+    "description": "Bookmark useful locations and compare previous saved file versions.",
+    "steps": [
+      "Press Ctrl+Alt+B to toggle the current file/line bookmark.",
+      "Press Ctrl+Alt+J to choose a bookmark.",
+      "Save files normally to collect local snapshots, or use Save Local Snapshot.",
+      "Press Ctrl+Alt+Shift+H and choose a version to compare with the current file."
+    ],
+    "command": "forge.fileHistory",
+    "note": "History keeps 20 versions per supported file up to 512 KB, across 500 recent files. It is not a backup. Bookmarks store line numbers and can move out of date after large edits."
+  },
+  {
+    "section": "Running",
+    "title": "Development server and HTTP connection errors",
+    "description": "Run CodeIgniter with the bundled PHP runtime.",
+    "steps": [
+      "Select CodeIgniter · Development in the top toolbar and click Run, or press Shift+F10.",
+      "Use Open Local Site to launch the site.",
+      "Use localhost in request URLs to match the server's binding; it may resolve to IPv6 on Windows.",
+      "If a request is refused, check the server terminal and the URL's host and port.",
+      "Press Shift+F2 or click Stop to stop a Forge-managed server."
+    ],
+    "command": "forge.serve",
+    "note": "The default port is 8080. Configure forge.serverPort if needed. A missing route returns 404; it is different from a refused connection."
+  },
+  {
+    "section": "Running",
+    "title": "Xdebug debugging",
+    "description": "Launch PHP under Xdebug and inspect stack frames, variables and breakpoints.",
+    "steps": [
+      "Configure the project, then click beside a PHP line number to add a breakpoint.",
+      "Press Shift+F9 or click Debug to start the CodeIgniter debug configuration.",
+      "Make a browser or HTTP request to execute the breakpoint.",
+      "Use the Debug pane to step through code and inspect values.",
+      "Choose Debug Current PHP File, Debug PHPUnit or Listen for Xdebug from the Run/Debug configuration list when needed."
+    ],
+    "command": "forge.debug",
+    "note": "External servers, Docker and remote interpreters need their own Xdebug paths and connection configuration."
+  },
+  {
+    "section": "Running",
+    "title": "Terminal, Composer and Spark",
+    "description": "Run project tools in the integrated terminal with the bundled PHP available on PATH.",
+    "steps": [
+      "Click Terminal at the bottom or use Forge: Project Terminal.",
+      "Use Forge: Composer to install/update/audit dependencies or run a Composer script.",
+      "Use Forge: Run Spark Command to choose commands discovered from your application.",
+      "Supply Spark arguments as a JSON array, for example [\"Users\",\"--suffix\"]."
+    ],
+    "command": "forge.spark",
+    "note": "The terminal is unrestricted: commands you type there do not pass through Forge's database confirmation checks."
+  },
+  {
+    "section": "CodeIgniter",
+    "title": "Class generation and route inspection",
+    "description": "Generate framework classes and explore resolved application routes.",
+    "steps": [
+      "Use Generate Class, choose a type and enter a PascalCase name.",
+      "Open Route Inspector to search resolved routes by path, method or controller.",
+      "Click a controller handler to jump to its method.",
+      "Save app/Config/Routes.php while the inspector is open to refresh it.",
+      "Place the caret inside a controller method, then right-click > Forge: Find Routes for Controller Method.",
+      "Click Create HTTP request on a route to append a request to an open requests.http document, or create requests.http if none exists."
+    ],
+    "command": "forge.routes",
+    "note": "Replace generated route parameters before sending. Generated routes or routes in included files may not have a direct source location. Route discovery executes the trusted application's Spark router."
+  },
+  {
+    "section": "HTTP",
+    "title": "REST requests and API testing",
+    "description": "Write and run API calls from .http files with the bundled REST Client.",
+    "steps": [
+      "Use HTTP Client to open requests.http.",
+      "Write a request such as GET http://localhost:8080/ followed by headers.",
+      "Separate requests with ###. Use @baseUrl = http://localhost:8080 and {{baseUrl}} for variables.",
+      "For JSON, add Content-Type: application/json, a blank line, then the JSON body.",
+      "Click Send Request above a request or press Ctrl+Alt+Enter.",
+      "Inspect the status, headers and body in the response view."
+    ],
+    "command": "forge.http",
+    "note": "Request files can contain credentials. Use environment variables and keep secrets out of Git. Generated requests are never sent automatically."
+  },
+  {
+    "section": "Quality",
+    "title": "PHPStan with CodeIgniter support",
+    "description": "Find type and application errors beyond PHP syntax checking.",
+    "steps": [
+      "Run Forge: Set Up PHPStan + CodeIgniter to install project development dependencies.",
+      "New projects get a level-6 phpstan.neon including the official CodeIgniter extension and test bootstrap.",
+      "If a config already exists, add the extension include yourself; Forge preserves it.",
+      "Run Forge: Analyze with PHPStan. Saved source is analyzed and findings appear in Problems and the PHPStan output channel."
+    ],
+    "command": "forge.phpstan",
+    "note": "Analysis is manual. The CodeIgniter extension boots application configuration and may execute migrations against temporary SQLite for schema inference. Only analyze trusted projects; testing environment does not guarantee custom bootstrap code is side-effect free."
+  },
+  {
+    "section": "Quality",
+    "title": "Tests, linting and quality checks",
+    "description": "Run application PHPUnit tests, PHP syntax checks, Composer validation and dependency auditing.",
+    "steps": [
+      "Use Run Tests for the complete project suite or Run Current Test for an open PHP test file.",
+      "Use PHP Syntax Check to lint the current PHP file.",
+      "Use Quality Checks for Composer validation, audit, PHPUnit and application/test syntax checks.",
+      "Run PHPStan separately for static analysis."
+    ],
+    "command": "forge.quality",
+    "note": "The IDE's own source checks are separate: run npm test and npm run lint at the IDE repository root."
+  },
+  {
+    "section": "Database",
+    "title": "Environment visibility and database writes",
+    "description": "The status bar displays CI_ENVIRONMENT and the default database host from .env.",
+    "steps": [
+      "Edit .env; the status refreshes after save.",
+      "Click the environment status to open .env.",
+      "When using Forge's migrate, migrate:* or db:seed commands, review the project, command and displayed database values.",
+      "Confirm the first dialog, then type the requested project/host phrase to authorize the write."
+    ],
+    "command": "forge.env",
+    "note": "Both checks apply even to local databases. .env is not proof of the runtime target: PHP config, process variables and command flags can override it. Terminal commands, user-authored tasks and Composer scripts are outside this guard."
+  },
+  {
+    "section": "Database",
+    "title": "SQLTools connection from .env",
+    "description": "Load MySQLi or PostgreSQL connection metadata without copying a password into settings.",
+    "steps": [
+      "Set database.default.hostname, database, username, DBDriver and port in .env.",
+      "Run Forge: Load SQLTools Connection from .env.",
+      "Open the resulting Forge connection in the SQLTools sidebar.",
+      "Enter the password when prompted. Query and browse using SQLTools.",
+      "Re-run the importer after changing connection details."
+    ],
+    "command": "forge.databaseFromEnv",
+    "note": "Passwords are prompted, not imported from .env. Existing manually saved profiles are not rewritten. SQLite, DSNs, SSH tunnels and custom database groups require manual configuration."
+  },
+  {
+    "section": "Workspace",
+    "title": "Git and source control",
+    "description": "Review changes, stage files, commit and compare revisions through the Source Control pane.",
+    "steps": [
+      "Open a Git repository, or initialize one using Git in the terminal.",
+      "Open View > Source Control to review the changes.",
+      "Inspect diffs before staging and committing.",
+      "Use Git commands in the terminal for advanced workflows."
+    ],
+    "note": "Forge's own source is also now in a local Git repository. Runtime data, user projects, dependencies and secrets are ignored. No remote repository has been created."
+  },
+  {
+    "section": "Workspace",
+    "title": "Themes, settings and logs",
+    "description": "Choose a workspace appearance, configure tools and inspect application logs.",
+    "steps": [
+      "Click Theme and choose Graphite, Abyss, Orchid or Paper.",
+      "Use Settings to change font, formatter, server port and PHP paths.",
+      "Use Application Logs to follow the latest CodeIgniter writable/logs file.",
+      "Use Toolchain Diagnostics to inspect PHP extensions, Composer, Git and installed integrations."
+    ],
+    "command": "forge.health"
+  },
+  {
+    "section": "Reference",
+    "title": "Built-in PHP and CodeIgniter documentation",
+    "description": "Search and read official reference articles inside Forge.",
+    "steps": [
+      "Click Documentation and choose a PHP or CodeIgniter topic.",
+      "Use Shift+F1 from PHP to look up the current function.",
+      "Follow supported documentation links inside the reader.",
+      "Previously cached articles remain available offline."
+    ],
+    "command": "forge.docs",
+    "note": "The cache is a selection of reference pages, not a complete offline copy of both websites."
+  }
+]

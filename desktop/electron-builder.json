@@ -1,0 +1,72 @@
+{
+  "appId": "dev.forge.php",
+  "productName": "Forge PHP",
+  "directories": {
+    "app": "../work/package-app",
+    "output": "../release"
+  },
+  "electronVersion": "44.9.1",
+  "electronDist": "node_modules/electron/dist",
+  "asar": false,
+  "npmRebuild": false,
+  "files": [
+    "lib/**/*",
+    "forge-main.cjs",
+    "package.json"
+  ],
+  "extraResources": [
+    {
+      "from": "../plugins",
+      "to": "forge/plugins",
+      "filter": [
+        "**/*",
+        "!**/test/**",
+        "!**/tests/**"
+      ]
+    },
+    {
+      "from": "../tools/php",
+      "to": "forge/tools/php",
+      "filter": [
+        "**/*"
+      ]
+    },
+    {
+      "from": "../tools/node",
+      "to": "forge/tools/node",
+      "filter": [
+        "node.exe",
+        "LICENSE"
+      ]
+    },
+    {
+      "from": "../tools",
+      "to": "forge/tools",
+      "filter": [
+        "composer.phar",
+        "composer.cmd"
+      ]
+    },
+    {
+      "from": "../docs/cache",
+      "to": "forge/docs/cache",
+      "filter": [
+        "**/*"
+      ]
+    }
+  ],
+  "win": {
+    "target": "nsis",
+    "signAndEditExecutable": false
+  },
+  "nsis": {
+    "oneClick": false,
+    "perMachine": false,
+    "allowToChangeInstallationDirectory": true,
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true,
+    "shortcutName": "Forge PHP"
+  },
+  "artifactName": "Forge-PHP-${version}-Setup.${ext}",
+  "compression": "normal"
+}

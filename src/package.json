@@ -179,6 +179,26 @@
       {
         "command": "forge.bookmarks",
         "title": "Forge: Navigate Bookmarks"
+      },
+      {
+        "command": "forge.setupPHPStan",
+        "title": "Forge: Set Up PHPStan + CodeIgniter"
+      },
+      {
+        "command": "forge.phpstan",
+        "title": "Forge: Analyze with PHPStan"
+      },
+      {
+        "command": "forge.controllerRoutes",
+        "title": "Forge: Find Routes for Controller Method"
+      },
+      {
+        "command": "forge.databaseFromEnv",
+        "title": "Forge: Load SQLTools Connection from .env"
+      },
+      {
+        "command": "forge.help",
+        "title": "Forge: Help and Feature Guide"
       }
     ],
     "viewsContainers": {
@@ -234,6 +254,11 @@
         {
           "command": "forge.fileHistory",
           "group": "forge@2"
+        },
+        {
+          "command": "forge.controllerRoutes",
+          "when": "editorLangId == php",
+          "group": "forge@3"
         }
       ]
     },
@@ -287,6 +312,11 @@
         "forge.showWelcome": {
           "type": "boolean",
           "default": true
+        },
+        "forge.formatChangedLinesOnly": {
+          "type": "boolean",
+          "default": true,
+          "description": "With project PHP formatters, apply only hunks wholly contained in changed lines relative to Git HEAD (disk content without Git)."
         }
       }
     },
@@ -377,6 +407,10 @@
       {
         "command": "forge.fileHistory",
         "key": "ctrl+alt+shift+h"
+      },
+      {
+        "command": "forge.help",
+        "key": "ctrl+alt+f1"
       }
     ]
   },
@@ -388,8 +422,7 @@
     "prettier": "^3.10.1"
   },
   "scripts": {
-    "test": "node --test test/core.test.js",
-    "test:integration": "node test/run-integration.js"
+    "test": "node --test test/*.test.js"
   },
   "devDependencies": {
     "@vscode/test-electron": "^2.5.2"
