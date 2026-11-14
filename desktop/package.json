@@ -23,7 +23,7 @@
         "reloadOnReconnect": true,
         "preferences": {
           "workbench.colorTheme": "Forge Graphite",
-          "editor.fontFamily": "Cascadia Code, Consolas, monospace",
+          "editor.fontFamily": "Consolas, 'Courier New', monospace",
           "editor.fontSize": 14,
           "editor.tabSize": 4,
           "editor.formatOnSave": true,
