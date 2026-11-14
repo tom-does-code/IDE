@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; script-src 'nonce-{{nonce}}'; style-src 'nonce-{{nonce}}'"
+    />
+    <style nonce="{{nonce}}">
+      /* FORGE_CSS */
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>
+        <strong>Coding assistant</strong>
+        <div class="quiet" id="provider-description">Runs on this PC</div>
+      </div>
+      <label><input id="enabled" type="checkbox" /> Enabled</label>
+    </header>
+    <section id="disabled">
+      Enable the assistant to choose a local or cloud model.
+    </section>
+    <section id="chat" hidden>
+      <div class="provider-row">
+        <select id="provider" aria-label="Assistant model">
+          <option value="local">Gemma 4 E4B (local)</option>
+          <option value="gemini-fast">Gemini 3.5 Flash-Lite (fast)</option>
+          <option value="gemini">Gemini 3.5 Flash (cloud)</option>
+        </select>
+      </div>
+      <nav aria-label="Conversation actions">
+        <div class="runtime-control" id="local-control">
+          <span id="runtime" role="status" data-state="checking"
+            >Checking runtime…</span
+          >
+          <button type="button" id="start" hidden>Start runtime</button>
+        </div>
+        <button type="button" id="gemini-key" hidden>Set Gemini API key</button>
+        <button type="button" id="clear">New chat</button>
+      </nav>
+      <label id="project-access" hidden
+        ><input id="project" type="checkbox" checked /> Include open file and
+        allow project lookups</label
+      >
+      <main id="messages" aria-label="Conversation">
+        <div id="empty">
+          Ask about PHP or CodeIgniter, or attach code to review, explain, or
+          refactor.
+        </div>
+      </main>
+      <form id="compose">
+        <div class="attachments">
+          <button type="button" data-attach="selection">+ Selection</button>
+          <button type="button" data-attach="file">+ Active file</button>
+          <button type="button" id="attachment" hidden></button>
+        </div>
+        <textarea
+          id="prompt"
+          maxlength="2500"
+          rows="3"
+          aria-label="Ask the assistant"
+          aria-describedby="compose-hint"
+          placeholder="Ask Gemma…"
+        ></textarea>
+        <div class="send-row">
+          <div class="compose-meta">
+            <span id="compose-hint"
+              >Enter to send · Shift+Enter for a new line</span
+            >
+            <span id="status" role="status"></span>
+          </div>
+          <button class="primary" id="ask" type="submit">Send</button>
+          <button type="button" id="stop" hidden>Stop</button>
+        </div>
+      </form>
+    </section>
+    <script nonce="{{nonce}}">
+      /* FORGE_MARKDOWN */
+    </script>
+    <script nonce="{{nonce}}">
+      /* FORGE_SCRIPT */
+    </script>
+  </body>
+</html>

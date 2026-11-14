@@ -199,6 +199,18 @@
       {
         "command": "forge.help",
         "title": "Forge: Help and Feature Guide"
+      },
+      {
+        "command": "forge.assistant.open",
+        "title": "Forge: Open Gemma Assistant"
+      },
+      {
+        "command": "forge.git.open",
+        "title": "Forge: Open Git Graph"
+      },
+      {
+        "command": "forge.installIntelephense",
+        "title": "Forge: Install PHP Completions (Intelephense)"
       }
     ],
     "viewsContainers": {
@@ -207,6 +219,18 @@
           "id": "forge",
           "title": "Forge PHP",
           "icon": "media/forge.svg"
+        },
+        {
+          "id": "forge-git",
+          "title": "Forge Git",
+          "icon": "$(git-merge)"
+        }
+      ],
+      "secondarySidebar": [
+        {
+          "id": "forge-assistant",
+          "title": "Gemma Assistant",
+          "icon": "$(sparkle)"
         }
       ]
     },
@@ -215,6 +239,20 @@
         {
           "id": "forge.project",
           "name": "Project Workbench"
+        }
+      ],
+      "forge-assistant": [
+        {
+          "id": "forge.assistant.chat",
+          "name": "Gemma Assistant",
+          "type": "webview"
+        }
+      ],
+      "forge-git": [
+        {
+          "id": "forge.git.graph",
+          "name": "Commit Graph",
+          "type": "webview"
         }
       ]
     },
@@ -282,6 +320,21 @@
         "label": "Forge Paper",
         "uiTheme": "vs",
         "path": "themes/paper.json"
+      },
+      {
+        "label": "Forge Ember",
+        "uiTheme": "vs-dark",
+        "path": "themes/ember.json"
+      },
+      {
+        "label": "Forge Midnight",
+        "uiTheme": "vs-dark",
+        "path": "themes/midnight.json"
+      },
+      {
+        "label": "Forge Pine",
+        "uiTheme": "vs-dark",
+        "path": "themes/pine.json"
       }
     ],
     "snippets": [
@@ -317,6 +370,26 @@
           "type": "boolean",
           "default": true,
           "description": "With project PHP formatters, apply only hunks wholly contained in changed lines relative to Git HEAD (disk content without Git)."
+        },
+        "forge.assistant.enabled": {
+          "type": "boolean",
+          "default": false,
+          "scope": "application",
+          "description": "Enable the optional local Gemma coding assistant."
+        },
+        "forge.assistant.port": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 65535,
+          "default": 1234,
+          "scope": "application",
+          "description": "Loopback port for the LM Studio or llmster server."
+        },
+        "forge.assistant.model": {
+          "type": "string",
+          "default": "",
+          "scope": "application",
+          "description": "LM Studio model identifier. Leave empty to select a local Gemma 4 E4B model automatically."
         }
       }
     },
@@ -411,6 +484,20 @@
       {
         "command": "forge.help",
         "key": "ctrl+alt+f1"
+      },
+      {
+        "command": "forge.assistant.open",
+        "key": "ctrl+alt+a"
+      },
+      {
+        "command": "forge.git.open",
+        "key": "ctrl+alt+g"
+      },
+      {
+        "command": "workbench.action.files.save",
+        "key": "ctrl+s",
+        "mac": "cmd+s",
+        "when": "editorTextFocus"
       }
     ]
   },
@@ -419,6 +506,7 @@
     "cheerio": "^1.2.0",
     "diff": "^9.0.0",
     "jsonc-parser": "^3.3.1",
+    "markdown-it": "14.3.3",
     "prettier": "^3.10.1"
   },
   "scripts": {

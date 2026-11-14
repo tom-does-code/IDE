@@ -117,6 +117,8 @@ module.exports = new ContainerModule((bind) => {
       const menu = [...MAIN_MENU_BAR, "5_forge"];
       menus.registerSubmenu(menu, "Forge");
       for (const [commandId, label] of [
+        ["forge.assistant.open", "Gemma Assistant"],
+        ["forge.git.open", "Git Graph"],
         ["forge.help", "Help and Feature Guide"],
         ["forge.home", "Project Workbench"],
         ["forge.phpstan", "Analyze with PHPStan"],

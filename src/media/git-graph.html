@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; script-src 'nonce-{{nonce}}'; style-src 'nonce-{{nonce}}'"
+    />
+    <style nonce="{{nonce}}">
+      /* FORGE_CSS */
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="top">
+        <strong id="repo">Repository</strong
+        ><button data-action="repository">Switch</button
+        ><button data-action="refresh" title="Refresh">↻</button>
+      </div>
+      <div id="head"></div>
+      <section id="setup" hidden>
+        <p id="setup-text"></p>
+        <button data-action="init">Initialize repository</button>
+      </section>
+      <section id="workflow" hidden>
+        <nav aria-label="Commit and publish">
+          <button data-action="scm">Changes</button>
+          <button data-action="commit">Commit staged…</button>
+          <button data-action="signIn">Sign in to GitHub</button>
+          <button data-action="publish">Publish to GitHub…</button>
+        </nav>
+        <p id="workflow-hint"></p>
+      </section>
+      <nav id="repository-actions" hidden>
+        <button data-action="fetch">Fetch</button
+        ><button data-action="pull">Pull</button
+        ><button data-action="push">Push…</button>
+        <button data-action="actions">Actions…</button
+        ><button data-action="github">GitHub…</button>
+      </nav>
+      <input
+        id="filter"
+        hidden
+        type="search"
+        placeholder="Filter commits or branches…"
+        aria-label="Filter commits"
+      />
+      <details id="branches" hidden>
+        <summary>Branches</summary>
+        <ul></ul>
+      </details>
+    </header>
+    <p id="status" role="status">Reading repository…</p>
+    <main id="graph" aria-label="Commit graph"></main>
+    <footer id="graph-footer" hidden>
+      <button data-action="more">Load older commits</button>
+    </footer>
+    <script nonce="{{nonce}}">
+      /* FORGE_SCRIPT */
+    </script>
+  </body>
+</html>

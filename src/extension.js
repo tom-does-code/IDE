@@ -539,7 +539,9 @@ function escape(s) {
       ],
   );
 }
-const THEMES = ["Forge Graphite", "Forge Abyss", "Forge Orchid", "Forge Paper"];
+const THEMES = require("./package.json").contributes.themes.map(
+  (theme) => theme.label,
+);
 async function theme(name) {
   const choice = THEMES.includes(name)
     ? name
@@ -653,6 +655,8 @@ function activate(ctx) {
       settings.update(key, php(), vscode.ConfigurationTarget.Global);
   }
   require("./help").activate(ctx);
+  require("./assistant").activate(ctx);
+  require("./git-graph").activate(ctx);
   output = vscode.window.createOutputChannel("Forge PHP");
   tree = new ProjectTree();
   ctx.subscriptions.push(
@@ -661,6 +665,19 @@ function activate(ctx) {
     vscode.window.registerTreeDataProvider("forge.project", tree),
   );
   const commands = {
+    installIntelephense: async () => {
+      if (
+        !vscode.extensions.getExtension("bmewburn.vscode-intelephense-client")
+      ) {
+        await vscode.commands.executeCommand(
+          "workbench.extensions.installExtension",
+          "bmewburn.vscode-intelephense-client",
+        );
+      }
+      vscode.window.showInformationMessage(
+        "Intelephense is installed. Reopen your PHP file if suggestions do not appear.",
+      );
+    },
     home: openHome,
     newProject,
     configure: async () => {

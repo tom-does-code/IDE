@@ -17,3 +17,15 @@ node_modules/
 .env
 .env.*
 !.env.example
+
+# Local model artifacts and credentials
+*.gguf
+*.safetensors
+*.onnx
+*.pem
+*.pfx
+*.p12
+*.key
+/desktop/.browser_modules/
+/desktop/lib-gen/
+/desktop/.cache/

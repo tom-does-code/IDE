@@ -9,55 +9,38 @@
   "electronDist": "node_modules/electron/dist",
   "asar": false,
   "npmRebuild": false,
-  "files": [
-    "lib/**/*",
-    "forge-main.cjs",
-    "package.json"
-  ],
+  "files": ["lib/**/*", "assets/*", "forge-main.cjs", "package.json"],
   "extraResources": [
     {
       "from": "../plugins",
       "to": "forge/plugins",
-      "filter": [
-        "**/*",
-        "!**/test/**",
-        "!**/tests/**"
-      ]
+      "filter": ["**/*", "!**/test/**", "!**/tests/**"]
     },
     {
       "from": "../tools/php",
       "to": "forge/tools/php",
-      "filter": [
-        "**/*"
-      ]
+      "filter": ["**/*"]
     },
     {
       "from": "../tools/node",
       "to": "forge/tools/node",
-      "filter": [
-        "node.exe",
-        "LICENSE"
-      ]
+      "filter": ["node.exe", "LICENSE"]
     },
     {
       "from": "../tools",
       "to": "forge/tools",
-      "filter": [
-        "composer.phar",
-        "composer.cmd"
-      ]
+      "filter": ["composer.phar", "composer.cmd", "gh.exe", "gh-LICENSE"]
     },
     {
       "from": "../docs/cache",
       "to": "forge/docs/cache",
-      "filter": [
-        "**/*"
-      ]
+      "filter": ["**/*"]
     }
   ],
   "win": {
     "target": "nsis",
-    "signAndEditExecutable": false
+    "icon": "assets/forge.ico",
+    "signExecutable": false
   },
   "nsis": {
     "oneClick": false,

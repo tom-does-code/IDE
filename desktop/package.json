@@ -1,7 +1,7 @@
 {
   "name": "forge-php-desktop",
   "productName": "Forge PHP",
-  "version": "1.0.0",
+  "version": "1.4.0",
   "private": true,
   "description": "Standalone PHP and CodeIgniter development environment",
   "author": "Forge PHP",
@@ -11,7 +11,7 @@
     "build": "theia build --mode production",
     "start": "theia start --plugins=local-dir:../plugins",
     "rebuild": "theia rebuild:electron",
-    "package:win": "node scripts/package-app.cjs && electron-builder --config electron-builder.json --win nsis --x64"
+    "package:win": "node scripts/sync-plugin.cjs && node scripts/package-app.cjs && electron-builder --config ../work/release-builder.json --win nsis --x64"
   },
   "theia": {
     "target": "electron",

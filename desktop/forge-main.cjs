@@ -36,9 +36,28 @@ process.env.PATH =
 app.setName("Forge PHP");
 app.setAppUserModelId("dev.forge.php");
 app.setPath("userData", path.join(process.env.THEIA_CONFIG_DIR, "electron"));
+if (process.platform === "win32") {
+  const icon = path.join(__dirname, "assets", "forge.ico");
+  const launcher = app.isPackaged
+    ? process.execPath
+    : path.join(base, "Forge PHP.exe");
+  if (fs.existsSync(icon)) {
+    app.on("browser-window-created", (_, window) => {
+      window.setIcon(icon);
+      window.setAppDetails({
+        appId: "dev.forge.php",
+        appIconPath: icon,
+        ...(fs.existsSync(launcher) && {
+          relaunchCommand: `"${launcher}"`,
+          relaunchDisplayName: "Forge PHP",
+        }),
+      });
+    });
+  }
+}
 app.setAboutPanelOptions({
   applicationName: "Forge PHP",
-  applicationVersion: "1.1.0",
+  applicationVersion: app.getVersion(),
   copyright:
     "Built on Eclipse Theia, Monaco, PHP, and independent language tools.",
 });

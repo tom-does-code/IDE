@@ -1,0 +1,165 @@
+:root {
+  color: var(--vscode-foreground);
+  font:
+    13px/1.45 "Segoe UI",
+    sans-serif;
+}
+body {
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+header,
+footer {
+  padding: 9px 10px;
+  border-bottom: 1px solid var(--vscode-panel-border);
+}
+.top,
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
+}
+.top strong {
+  flex: 1;
+  overflow-wrap: anywhere;
+}
+#head,
+#status,
+small {
+  color: var(--vscode-descriptionForeground);
+  font-size: 11px;
+}
+#head {
+  margin: 4px 0 8px;
+}
+button {
+  font: inherit;
+  border: 0;
+  border-radius: 3px;
+  padding: 3px 7px;
+  color: var(--vscode-button-secondaryForeground, var(--vscode-foreground));
+  background: var(
+    --vscode-button-secondaryBackground,
+    var(--vscode-input-background)
+  );
+  cursor: pointer;
+}
+button:disabled {
+  opacity: 0.5;
+}
+button:hover {
+  background: var(--vscode-list-hoverBackground);
+}
+button:focus-visible,
+input:focus-visible {
+  outline: 1px solid var(--vscode-focusBorder);
+  outline-offset: -1px;
+}
+input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 6px;
+  margin: 8px 0 5px;
+  font: inherit;
+  border: 1px solid var(--vscode-panel-border);
+  background: var(--vscode-input-background);
+  color: var(--vscode-input-foreground);
+}
+details {
+  font-size: 11px;
+}
+details ul {
+  max-height: 96px;
+  overflow: auto;
+  margin: 4px 0 0;
+  padding-left: 18px;
+}
+#status {
+  margin: 0;
+  padding: 0 10px;
+  overflow-wrap: anywhere;
+}
+#status:not(:empty) {
+  padding-block: 6px;
+}
+#status.error {
+  color: var(--vscode-errorForeground);
+}
+main {
+  flex: 1;
+  overflow: auto;
+  min-height: 0;
+}
+.row,
+.connector {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 9px;
+}
+.row {
+  gap: 6px;
+  text-align: left;
+  min-height: 24px;
+  border-radius: 0;
+  background: transparent;
+}
+.row.selected {
+  color: var(--vscode-list-activeSelectionForeground);
+  background: var(--vscode-list-activeSelectionBackground);
+}
+.lanes {
+  flex: none;
+  font:
+    13px/24px Consolas,
+    monospace;
+  white-space: pre;
+}
+.connector .lanes {
+  line-height: 11px;
+}
+.subject {
+  flex: 1;
+  min-width: 70px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ref {
+  white-space: nowrap;
+  color: var(--vscode-textLink-foreground);
+}
+.lane-0 {
+  color: #60b8d4;
+}
+.lane-1 {
+  color: #b490ee;
+}
+.lane-2 {
+  color: #ebaf65;
+}
+.lane-3 {
+  color: #74c6a2;
+}
+.lane-4 {
+  color: #ec8195;
+}
+footer {
+  border-top: 1px solid var(--vscode-panel-border);
+  border-bottom: 0;
+}
+
+[hidden] {
+  display: none !important;
+}
+#setup p,
+#workflow-hint {
+  color: var(--vscode-descriptionForeground);
+  font-size: 12px;
+  line-height: 1.45;
+  margin: 6px 0 10px;
+}

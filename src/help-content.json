@@ -248,5 +248,35 @@
     ],
     "command": "forge.docs",
     "note": "The cache is a selection of reference pages, not a complete offline copy of both websites."
+  },
+  {
+    "section": "Coding assistant",
+    "title": "Gemma and Google Gemini",
+    "description": "Choose between local Gemma 4 E4B and Google Gemini in the right sidebar. Both stream replies.",
+    "steps": [
+      "Open Gemma Assistant with Ctrl+Alt+A and enable it.",
+      "Install the standalone llmster runtime and a Gemma 4 E4B model. Use Start runtime if the local server is off.",
+      "Choose Gemini 3.5 Flash-Lite for quicker replies or Gemini 3.5 Flash for more reasoning. Use Set Gemini API key to save or replace its key.",
+      "Leave project lookups enabled to send an excerpt from the active editor, including unsaved edits, and let Gemini request more project files as needed.",
+      "Expand Thinking summary and file lookups to see summaries Google provides and which paths Gemini opened.",
+      "Attach a selection or file to include code in the next request.",
+      "Send a question. Use Stop to cancel, or Copy and Insert on a completed code block."
+    ],
+    "command": "forge.assistant.open",
+    "note": "Gemma stays on this PC. Gemini sends the current conversation, attachments and selected project context to Google. Disable project lookups to omit automatic project context. File access is read-only, capped per turn, and excludes common credential files, dependency folders and binaries. Google may omit thinking summaries, especially in fast mode. Switching models keeps the transcript and carries recent turns into your next request. Switching to Gemini shares those turns with Google when you send. Use New chat to start without prior context."
+  },
+  {
+    "section": "Source control",
+    "title": "Forge Git commit graph",
+    "description": "Browse the branch and merge history, open diffs, and run Git and GitHub actions.",
+    "steps": [
+      "Open the project folder, then open Forge Git with Ctrl+Alt+G. Choose Initialize repository if the folder is new to Git.",
+      "Save your files with Ctrl+S. Open Changes and use + next to each file you want to include. Check that your .gitignore excludes secrets and generated files.",
+      "Return to Forge Git and choose Commit staged. Enter a message and, if prompted, a commit name and email.",
+      "Choose Sign in to GitHub and complete the browser authorization. Use Publish to GitHub for a new remote, or GitHub → Set GitHub remote and Push for an existing one.",
+      "Click any commit to inspect its patch. Use Actions for branches, merges, rebases, stashes, and tags."
+    ],
+    "command": "forge.git.open",
+    "note": "GitHub actions use GitHub CLI and your own account permissions. Use Changes for file-by-file staging."
   }
 ]
