@@ -67,15 +67,19 @@ function key(url) {
     ".json"
   );
 }
-async function load(url, cache, refresh = false) {
+async function load(url, cache, refresh = false, bundledCache) {
   if (!allowed(url))
     throw Error(
       "Only official PHP and CodeIgniter manual pages are supported.",
     );
-  fs.mkdirSync(cache, { recursive: true });
   const file = path.join(cache, key(url));
-  if (!refresh && fs.existsSync(file))
-    return JSON.parse(fs.readFileSync(file, "utf8"));
+  if (!refresh) {
+    for (const directory of [cache, bundledCache].filter(Boolean)) {
+      const cached = path.join(directory, key(url));
+      if (fs.existsSync(cached))
+        return JSON.parse(fs.readFileSync(cached, "utf8"));
+    }
+  }
   const res = await fetch(url, { signal: AbortSignal.timeout(15000) });
   if (!res.ok) throw Error("Documentation returned HTTP " + res.status);
   if (!allowed(res.url)) throw Error("Unexpected documentation redirect.");
@@ -113,6 +117,7 @@ async function load(url, cache, refresh = false) {
     downloadedAt: new Date().toISOString(),
     html: content.html(),
   };
+  fs.mkdirSync(cache, { recursive: true });
   fs.writeFileSync(file, JSON.stringify(data));
   return data;
 }

@@ -1,7 +1,7 @@
 {
   "name": "forge-php-desktop",
   "productName": "Forge PHP",
-  "version": "1.4.0",
+  "version": "1.4.2",
   "private": true,
   "description": "Standalone PHP and CodeIgniter development environment",
   "author": "Forge PHP",
@@ -182,5 +182,8 @@
     "@theia/cli": "1.77.0",
     "electron": "44.9.1",
     "electron-builder": "^26.0.12"
+  },
+  "overrides": {
+    "dompurify": "3.4.18"
   }
 }

@@ -232,7 +232,7 @@
       "Click Theme and choose Graphite, Abyss, Orchid or Paper.",
       "Use Settings to change font, formatter, server port and PHP paths.",
       "Use Application Logs to follow the latest CodeIgniter writable/logs file.",
-      "Use Toolchain Diagnostics to inspect PHP extensions, Composer, Git and installed integrations."
+      "Use Toolchain Diagnostics to inspect PHP extensions, Composer, Git and installed integrations. It also compares the runtime with the PHP language target, checks locked project platform requirements, and reports root .env Git tracking. Review these results when opening a client project on another PC."
     ],
     "command": "forge.health"
   },

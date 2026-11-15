@@ -21,13 +21,15 @@ exports.activate = (context) => {
     async provideDocumentFormattingEdits(document, options, token) {
       if (document.uri.scheme !== "file" || token.isCancellationRequested)
         return [];
+      const version = document.version;
+      const source = document.getText();
       const root = vscode.workspace.getWorkspaceFolder(document.uri);
       if (document.languageId === "php" && root && vscode.workspace.isTrusted) {
         try {
           const formatted = await require("./project-formatter").format({
             root: root.uri.fsPath,
             file: document.uri.fsPath,
-            source: document.getText(),
+            source,
             php:
               vscode.workspace.getConfiguration("forge").get("phpPath") ||
               path.join(process.env.FORGE_HOME, "tools/php/php.exe"),
@@ -36,7 +38,8 @@ exports.activate = (context) => {
               .get("formatChangedLinesOnly", true),
           });
           if (formatted !== undefined)
-            return formatted === document.getText() ||
+            return formatted === source ||
+              document.version !== version ||
               token.isCancellationRequested
               ? []
               : [
@@ -97,7 +100,7 @@ exports.activate = (context) => {
         yaml: "yaml",
       };
       try {
-        const formatted = await prettier.format(document.getText(), {
+        const formatted = await prettier.format(source, {
           tabWidth: document.languageId === "php" ? 4 : 2,
           useTabs: !options.insertSpaces,
           ...config,
@@ -115,7 +118,11 @@ exports.activate = (context) => {
               }
             : {}),
         });
-        if (token.isCancellationRequested || formatted === document.getText())
+        if (
+          token.isCancellationRequested ||
+          document.version !== version ||
+          formatted === source
+        )
           return [];
         return [
           vscode.TextEdit.replace(

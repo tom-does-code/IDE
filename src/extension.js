@@ -315,17 +315,28 @@ async function test(current = false) {
       !file.uri.fsPath.startsWith(root.uri.fsPath + path.sep)
     )
       throw new Error("Open a PHP test file in the selected project first.");
-    await file.save();
     args.push(file.uri.fsPath);
   }
+  if (!(await vscode.workspace.saveAll(false))) return;
   await execute("PHPUnit", args, root, {
     group: vscode.TaskGroup.Test,
     env: { XDEBUG_MODE: "coverage" },
   });
 }
 async function health() {
+  trust();
+  const root = vscode.workspace.workspaceFolders?.length
+    ? await folder()
+    : undefined;
+  if (vscode.workspace.workspaceFolders?.length && !root) return;
   output.clear();
   output.show(true);
+  output.appendLine(`PHP executable: ${php()}`);
+  const target = vscode.workspace
+    .getConfiguration("intelephense", root?.uri)
+    .get("environment.phpVersion", "8.4.0");
+  output.appendLine(`PHP language target: ${target}`);
+  if (root) output.appendLine(`Project: ${root.uri.fsPath}`);
   for (const [label, exe, args] of [
     ["PHP", php(), ["-v"]],
     [
@@ -336,20 +347,110 @@ async function health() {
         'foreach (["intl","mbstring","curl","openssl","pdo_mysql","pdo_sqlite","zip","xdebug"] as $e) echo $e.": ".(extension_loaded($e)?"OK":"MISSING").PHP_EOL;',
       ],
     ],
-    ["Composer", php(), [composer(), "--version"]],
+    [
+      "Composer",
+      php(),
+      [composer(), "--no-plugins", "--no-scripts", "--version"],
+    ],
     ["Git", "git", ["--version"]],
   ]) {
     output.appendLine(`\n── ${label} ──`);
     try {
       const r = await run(exe, args, {
+        cwd: root?.uri.fsPath,
         env: env(),
         windowsHide: true,
         timeout: 15000,
       });
       output.appendLine(r.stdout);
+      if (label === "PHP") {
+        const runtime = r.stdout.match(/^PHP (\d+\.\d+)/)?.[1];
+        if (
+          runtime &&
+          runtime !== String(target).split(".").slice(0, 2).join(".")
+        )
+          output.appendLine(
+            "REVIEW: Runtime and PHP language target differ. Check both against your deployment PHP version.",
+          );
+      }
       if (r.stderr) output.appendLine(r.stderr);
     } catch (e) {
       output.appendLine(e.message);
+    }
+  }
+  if (root) {
+    const options = {
+      cwd: root.uri.fsPath,
+      env: env(),
+      windowsHide: true,
+      timeout: 15000,
+    };
+    output.appendLine("\n── Locked project platform requirements ──");
+    if (fs.existsSync(path.join(root.uri.fsPath, "composer.lock"))) {
+      try {
+        const result = await run(
+          php(),
+          [
+            composer(),
+            "--no-plugins",
+            "--no-scripts",
+            "--no-interaction",
+            "check-platform-reqs",
+            "--lock",
+          ],
+          options,
+        );
+        output.appendLine(
+          result.stdout +
+            result.stderr +
+            "PASS: Locked PHP and extension requirements satisfied.",
+        );
+      } catch (error) {
+        output.appendLine(
+          (error.stdout || "") +
+            (error.stderr || "") +
+            "REVIEW: Platform requirements could not be verified. " +
+            error.message,
+        );
+      }
+    } else {
+      output.appendLine(
+        "No composer.lock found. Resolve and review project dependencies before checking platform requirements.",
+      );
+    }
+    output.appendLine("\n── Git and root .env ──");
+    try {
+      const status = await run(
+        "git",
+        ["status", "--short", "--branch"],
+        options,
+      );
+      output.appendLine(status.stdout.slice(0, 4000));
+      const tracked = await run("git", ["ls-files", "--", ".env"], options);
+      if (tracked.stdout.trim()) {
+        output.appendLine(
+          "REVIEW: Root .env is tracked in Git. Review any committed credentials and repository history.",
+        );
+      } else {
+        const ignored = await run(
+          "git",
+          ["check-ignore", "--", ".env"],
+          options,
+        ).then(
+          () => true,
+          (error) => {
+            if (error.code === 1) return false;
+            throw error;
+          },
+        );
+        output.appendLine(
+          ignored
+            ? "Root .env is ignored by Git."
+            : "REVIEW: Root .env is not ignored by Git. Add an ignore rule if this project uses it for secrets.",
+        );
+      }
+    } catch (error) {
+      output.appendLine("Git checks unavailable: " + error.message);
     }
   }
   for (const id of [
@@ -370,6 +471,7 @@ async function qualityGate() {
   trust();
   const root = await folder();
   if (!root) return;
+  if (!(await vscode.workspace.saveAll(false))) return;
   output.clear();
   output.show(true);
   const checks = [

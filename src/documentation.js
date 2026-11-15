@@ -4,7 +4,7 @@ const vscode = require("vscode"),
 const service = require("./docs-service");
 exports.activate = (context, base) => {
   let panel;
-  const cache = path.join(base, "docs/cache");
+  const cache = path.join(context.globalStorageUri.fsPath, "docs-cache");
   async function open(url) {
     if (!panel) {
       panel = vscode.window.createWebviewPanel(
@@ -28,7 +28,12 @@ exports.activate = (context, base) => {
       });
     }
     panel.reveal(vscode.ViewColumn.Beside, true);
-    const data = await service.load(url, cache);
+    const data = await service.load(
+      url,
+      cache,
+      false,
+      path.join(base, "docs/cache"),
+    );
     const nonce = crypto.randomBytes(16).toString("hex");
     const esc = (s) =>
       s

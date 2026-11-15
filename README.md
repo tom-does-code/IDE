@@ -2,7 +2,7 @@
 
 ## Install on another PC
 
-1. Open this repository's **Releases** page on GitHub and download **Forge-PHP-1.4.0-Setup.exe** from the release assets.
+1. Open this repository's **Releases** page on GitHub and download **Forge-PHP-1.4.2-Setup.exe** from the release assets.
 2. Run the installer on Windows x64. Open **Forge PHP** from the Desktop or Start menu, then use **File → Open Folder**.
 3. For PHP suggestions, press **Ctrl+Shift+P** and run **Forge: Install PHP Completions (Intelephense)**. Install [Git for Windows](https://git-scm.com/download/win) to use Forge Git.
 4. If PHP reports a missing Visual C++ DLL, install Microsoft's [Visual C++ x64 Redistributable](https://aka.ms/vc14/vc_redist.x64.exe).
@@ -73,6 +73,8 @@ Local history automatically retains up to 20 versions per supported code file (m
 Secondary windows require the upstream Lumino patches: run `node_modules/.bin/theia-patch.cmd` before rebuilding if dependencies have been reinstalled.
 
 ## Feature guide and project tooling
+
+Before working on a project on a new PC, use **Tools → Toolchain diagnostics**. It reports the selected PHP interpreter and language target, checks the project's locked PHP and extension requirements, and flags a root `.env` tracked by Git or missing an ignore rule. PHPUnit and Project Quality Checks save open files first and stop when saving fails.
 
 Open **Help > Forge Feature Guide**, **Forge > Help and Feature Guide**, or press **Ctrl+Alt+F1**. The searchable guide covers every major workflow, setup steps, shortcuts, limitations, and a complete command directory.
 
